@@ -5,3 +5,5 @@ export const getHistory = () => {
     headers
   }).then(res => res.json())
 }
+
+export default getHistory

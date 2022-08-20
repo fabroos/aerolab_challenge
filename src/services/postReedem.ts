@@ -8,3 +8,5 @@ export const postReedem = (id: Product['_id']) => {
     body: JSON.stringify({ productId: id })
   }).then(res => res.json())
 }
+
+export default postReedem
