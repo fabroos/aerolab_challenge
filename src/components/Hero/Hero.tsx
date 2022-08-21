@@ -1,11 +1,18 @@
+import React from 'react'
 import { Box, BoxContent, Image } from './Hero.styles'
 
-export const Hero = () => {
+type Props = {
+  children: React.ReactNode
+  image: string
+  alt: string
+}
+
+export const Hero: React.FC<Props> = ({ children, image, alt }) => {
   return (
     <Box>
-      <Image src='header.png' alt='random' />
+      <Image src={image} alt={alt} />
       <BoxContent>
-        <h2>Electronics</h2>
+        <h2>{children}</h2>
       </BoxContent>
     </Box>
   )

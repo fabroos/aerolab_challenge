@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components'
-import { Header } from './components/Header/Header'
-import { Hero } from './components/Hero/Hero'
+import { Header, Hero } from './components'
 import { useUserContext } from './context/userContext'
 import Global from './styles/Global'
 import { theme } from './theme'
@@ -18,7 +17,9 @@ function App () {
     <ThemeProvider theme={theme}>
       <Global />
       <Header />
-      <Hero />
+      <Hero image='header.png' alt='light blue headphones'>
+        Electronics
+      </Hero>
     </ThemeProvider>
   )
 }
