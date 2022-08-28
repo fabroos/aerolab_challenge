@@ -1,4 +1,5 @@
 export * from './Header/Header'
-export * from './Header/Header.styles'
+export * as HeaderStyles from './Header/Header.styles'
 export * from './Hero/Hero'
-export * from './Hero/Hero.styles'
+export * as HeroStyles from './Hero/Hero.styles'
+
