@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
   const [isOpen, setOpen] = useState(false)
   const toggle = () => setOpen(isOpen => !isOpen)
   const close = () => setOpen(false)
-  console.log(user?.redeemHistory)
+
   return (
     <Container>
       <HeaderWrapper>
@@ -40,6 +40,7 @@ export const Header: React.FC = () => {
                 : user.redeemHistory.length - 10,
               user.redeemHistory.length
             )
+            .reverse()
             .map((item, index) => (
               <ItemHistory key={index}>
                 <p>{item.name}</p>

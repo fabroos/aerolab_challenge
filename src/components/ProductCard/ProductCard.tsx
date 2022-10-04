@@ -24,7 +24,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   function handleReedem () {
     if (user && user.points >= product.cost) {
       setState('loading')
-      reedemProduct(product._id, product.cost)
+      reedemProduct(product)
         .then(() => {
           setState('succes')
         })

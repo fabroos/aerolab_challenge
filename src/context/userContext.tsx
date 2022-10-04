@@ -1,4 +1,4 @@
-import { User } from '@/models'
+import { Product, User } from '@/models'
 import { getUser, postPoints, postReedem } from '@/services'
 import { createContext, useContext, useEffect, useState } from 'react'
 
@@ -8,7 +8,7 @@ type USerContextType = {
     loading: boolean
     error: Error | null
   }
-  reedemProduct: (id: string, cost: number) => Promise<void>
+  reedemProduct: (product: Product) => Promise<void>
   chargePoints: (points: number) => Promise<void>
 }
 
@@ -45,15 +45,16 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       })
   }, [])
 
-  function reedemProduct (id: string, cost: number) {
-    return postReedem(id).then(res => {
+  function reedemProduct (product: Product) {
+    return postReedem(product._id).then(res => {
       // if the response is successful, set the user ✅
       setUser(prev => ({
         loading: false,
         error: null,
         response: {
           ...prev.response!,
-          points: prev.response!.points - cost
+          points: prev.response!.points - product.cost,
+          redeemHistory: [...prev.response!.redeemHistory, product]
         }
       }))
     })
