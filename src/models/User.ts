@@ -4,6 +4,6 @@ export type User = {
   id: string
   name: string
   points: number
-  reedemHistory: Array<Product>
+  redeemHistory: Array<Product>
   createdDate: string
 }
