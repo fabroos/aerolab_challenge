@@ -1,7 +1,7 @@
 export type Product = {
   _id: string
   name: string
-  price: number
+  cost: number
   category: string
   img: {
     url: string

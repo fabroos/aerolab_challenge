@@ -6,7 +6,11 @@ export const postReedem = (id: Product['_id']) => {
     method: 'POST',
     headers,
     body: JSON.stringify({ productId: id })
-  }).then(res => res.json())
+  })
+    .then(res => res.json())
+    .catch(err => {
+      throw 'error redeeming product'
+    })
 }
 
 export default postReedem
