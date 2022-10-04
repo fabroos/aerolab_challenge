@@ -1,5 +1,5 @@
 import { User } from '@/models'
-import { getUser } from '@/services'
+import { getUser, postPoints, postReedem } from '@/services'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type USerContextType = {
@@ -8,6 +8,8 @@ type USerContextType = {
     loading: boolean
     error: Error | null
   }
+  reedemProduct: (id: string, cost: number) => Promise<void>
+  chargePoints: (points: number) => Promise<void>
 }
 
 const userContext = createContext({} as USerContextType)
@@ -43,8 +45,38 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       })
   }, [])
 
+  function reedemProduct (id: string, cost: number) {
+    return postReedem(id).then(res => {
+      // if the response is successful, set the user ✅
+      setUser(prev => ({
+        loading: false,
+        error: null,
+        response: {
+          ...prev.response!,
+          points: prev.response!.points - cost
+        }
+      }))
+    })
+  }
+
+  function chargePoints (points: number) {
+    return postPoints(points).then(res => {
+      // if the response is successful, set the user ✅
+      setUser(prev => ({
+        loading: false,
+        error: null,
+        response: {
+          ...prev.response!,
+          points: prev.response!.points + points
+        }
+      }))
+    })
+  }
+
   return (
-    <userContext.Provider value={{ user }}>{children}</userContext.Provider>
+    <userContext.Provider value={{ user, reedemProduct, chargePoints }}>
+      {children}
+    </userContext.Provider>
   )
 }
 

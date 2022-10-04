@@ -34,10 +34,10 @@ export function useProducts (initialLimit: number = 16) {
   const sortProducts = useCallback(
     (products: Product[]) => {
       let sortedProducts = [...products]
-      if (sort === SortOptions.HIGH_PRICE) {
-        sortedProducts.sort((a, b) => a.price - b.price)
-      } else if (sort === SortOptions.LOW_PRICE) {
-        sortedProducts.sort((a, b) => b.price - a.price)
+      if (sort === SortOptions.LOW_PRICE) {
+        sortedProducts.sort((a, b) => a.cost - b.cost)
+      } else if (sort === SortOptions.HIGH_PRICE) {
+        sortedProducts.sort((a, b) => b.cost - a.cost)
       } else {
         sortedProducts.sort((a, b) => b._id.localeCompare(a._id))
       }

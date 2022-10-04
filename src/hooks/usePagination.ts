@@ -10,20 +10,23 @@ export function usePagination<T> (initialArray: T[] = []) {
   const [canPrev, setCanPrev] = useState(false)
 
   function nextPage () {
-    if (page + 1 > maxPage) return
+    if (!canNext) return
     setPage(page + 1)
   }
 
   function prevPage () {
-    if (page === 1) return
+    if (!canPrev) return
     setPage(page - 1)
   }
 
   useEffect(() => {
+    // first we check if can go to next page  ➡️
     if (page === maxPage) setCanNext(false)
     else setCanNext(true)
+    // then we check if can go to prev page ⬅️
     if (page === 1) setCanPrev(false)
     else setCanPrev(true)
+    // and finally we set the items to show 🚀
     setItemsToShow(initialArray.slice((page - 1) * limit, page * limit))
   }, [page, initialArray, limit])
 
