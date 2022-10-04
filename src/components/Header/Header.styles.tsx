@@ -12,6 +12,15 @@ const UserArticle = styled.article`
   align-items: center;
   color: ${({ theme }) => theme.colors['dark-gray']};
   gap: 1rem;
+  p {
+    text-decoration: underline;
+    text-decoration-color: ${({ theme }) => theme.colors['dark-gray']};
+    cursor: pointer;
+    &:hover {
+      text-decoration-color: ${({ theme }) => theme.colors['light-blue']};
+      color: ${({ theme }) => theme.colors['light-blue']};
+    }
+  }
 `
 
 const UserCoins = styled.div`

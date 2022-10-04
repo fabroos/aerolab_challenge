@@ -18,10 +18,10 @@ export const Header: React.FC = () => {
   return (
     <Container>
       <HeaderWrapper>
-        <Logo onClick={toggle} />
+        <Logo />
         {user && (
           <UserArticle>
-            <p>{user?.name}</p>
+            <p onClick={toggle}>{user?.name}</p>
             <UserCoins>
               <span>{user?.points}</span>
               <Coin />
@@ -53,7 +53,7 @@ export const Header: React.FC = () => {
   )
 }
 
-const ItemHistory = styled.div`
+const ItemHistory = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,10 +73,10 @@ const ItemHistory = styled.div`
   }
 `
 
-const History = styled.div`
+const History = styled.ul`
   display: flex;
   flex-direction: column;
-
+  list-style: none;
   max-height: 50vh;
   overflow-y: auto;
 `

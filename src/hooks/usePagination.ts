@@ -30,7 +30,6 @@ export function usePagination<T> (initialArray: T[] = []) {
     limit,
     setLimit,
     total,
-
     itemsToShow,
     nextPage,
     prevPage,

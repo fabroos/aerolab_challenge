@@ -9,3 +9,10 @@ export const Container = styled.div`
 export const Box = styled.div`
   display: block;
 `
+
+export const CenterFull = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
