@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components'
-import { Header, Hero } from './components'
-import { ProductsSection } from './components/ProductsSection/ProductsSection'
+import { Header, Hero, ProductsSection } from './components'
 import { useUserContext } from './context/userContext'
 import Global from './styles/Global'
 import { theme } from './theme'
