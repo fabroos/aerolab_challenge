@@ -35,8 +35,10 @@ export const Header: React.FC = () => {
         <History>
           {user?.redeemHistory
             .slice(
-              0,
-              user.redeemHistory.length > 10 ? 10 : user.redeemHistory.length
+              user.redeemHistory.length < 10
+                ? 0
+                : user.redeemHistory.length - 10,
+              user.redeemHistory.length
             )
             .map((item, index) => (
               <ItemHistory key={index}>
